@@ -5,10 +5,11 @@ import java.util.List;
 
 import com.lym.manager.model.ContractInfo;
 import com.lym.manager.model.ContractInfoExample;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-@Repository
+@Mapper
 public interface ContractInfoMapper {
     long countByExample(ContractInfoExample example);
 
