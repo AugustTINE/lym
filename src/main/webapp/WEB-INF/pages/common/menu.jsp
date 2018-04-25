@@ -14,8 +14,9 @@
                 <ul class="nav side-menu">
                     <li class="${menu eq 'card'?'active':''}"><a><i class="fa fa-home"></i>活动管理配置<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu" style="${menu eq 'card'?'display: block;':''}">
-                            <li class="${submenu eq 'welcab_appointment'?'current-page':''}"><a href="${ctx}activity/index.html">优惠券配置模板</a></li>
-                            <li class="${submenu eq 'welcab_appointment'?'current-page':''}"><a href="${ctx}activity/index.html">专车司机拉乘客</a></li>
+                            <li class="${submenu eq 'coupon_config'?'current-page':''}"><a href="${ctx}couponConfig/index.html">活动管理</a></li>
+                            <li class="${submenu eq 'coupon_config'?'current-page':''}"><a href="${ctx}contractManager/index.html">合同数据</a></li>
+                            <li class="${submenu eq 'coupon_config'?'current-page':''}"><a href="${ctx}couponConfig/index.html">设备数据</a></li>
                         </ul>
                     </li>
 
