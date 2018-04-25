@@ -85,7 +85,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from lym..contract_info
+    from contract_info
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -102,13 +102,13 @@
     </if>
   </select>
   <delete id="deleteByExample" parameterType="com.lym.manager.model.ContractInfoExample">
-    delete from lym..contract_info
+    delete from contract_info
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="com.lym.manager.model.ContractInfo">
-    insert into lym..contract_info (id, big_area, city, 
+    insert into contract_info (id, big_area, city, 
       contract_name, sign_date, sign_person, 
       invalid_date, device_num, device_info, 
       rent_per, payment, pay_date_recent, 
@@ -120,7 +120,7 @@
       #{payDateNext,jdbcType=TIMESTAMP}, #{comments,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.lym.manager.model.ContractInfo">
-    insert into lym..contract_info
+    insert into contract_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -211,13 +211,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.lym.manager.model.ContractInfoExample" resultType="java.lang.Long">
-    select count(*) from lym..contract_info
+    select count(*) from contract_info
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update lym..contract_info
+    update contract_info
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
@@ -267,7 +267,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update lym..contract_info
+    update contract_info
     set id = #{record.id,jdbcType=INTEGER},
       big_area = #{record.bigArea,jdbcType=VARCHAR},
       city = #{record.city,jdbcType=VARCHAR},

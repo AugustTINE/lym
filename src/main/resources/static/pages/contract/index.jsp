@@ -48,7 +48,7 @@
 												<button type="submit" class="btn btn-primary btn-xs">查询</button>
 												<input type="button" class="btn btn-primary btn-xs"
 												value="新建"
-												onclick="window.location.href='${ctx}vehicle/toEdit.html'" />
+												onclick="window.location.href='${ctx}contract/toEdit.html'" />
 											</td>
 										</tr>
 
@@ -76,7 +76,7 @@
 													<th class="column-title">${entity.rank}</th>
 													<th class="column-title"><input type="button"
 														class="btn btn-primary btn-xs" value="修改"
-														onclick="window.location.href='${ctx}vehicle/toEdit.html?id=${entity.id}'" />
+														onclick="window.location.href='${ctx}contract/toEdit.html?id=${entity.id}'" />
 													</th>
 
 												</tr>

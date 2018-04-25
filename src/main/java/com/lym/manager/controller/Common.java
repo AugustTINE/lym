@@ -1,13 +1,14 @@
 package com.lym.manager.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-@RestController
+@Controller
 public class Common {
 
-    @RequestMapping("/admin")
+    @RequestMapping(value = "/index",method = RequestMethod.GET)
     public String test(){
-        return "test";
+        return "/public/index.jsp";
     }
 }

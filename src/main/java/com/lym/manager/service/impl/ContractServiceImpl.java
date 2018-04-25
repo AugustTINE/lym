@@ -3,6 +3,8 @@ package com.lym.manager.service.impl;
 import com.lym.manager.mapper.ContractInfoMapper;
 import com.lym.manager.model.ContractInfo;
 import com.lym.manager.service.ContractService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +18,7 @@ public class ContractServiceImpl implements ContractService {
 
     @Override
     public List<ContractInfo> listContract() {
-        mapper.insert(new ContractInfo());
+        int i = mapper.insert(new ContractInfo());
         return null;
     }
 }
