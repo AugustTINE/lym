@@ -29,7 +29,7 @@
 					<div class="x_panel">
 						<div class="x_title">
 							<ol class="breadcrumb">
-								<li><a href="${ctx}contractManager/index.html">合同信息</a></li>
+								<li><a href="${ctx}contractManager/index">合同信息</a></li>
 								<li class="active">${configInfo.id == null?'新增':'查看'}合同</li>
 							</ol>
 						</div>
@@ -86,9 +86,21 @@
 
 								<div class="item form-group">
 									<label class="control-label col-md-3 col-sm-3 col-xs-12" for="deviceInfo">设备编号<span class="required">*</span></label>
-									<div class="control-label col-md-4 col-sm-4 col-xs-12">
+									<div class="control-label col-md-3 col-sm-3 col-xs-12">
 										<input type="text"  id="deviceInfo" name="deviceInfo" class="form-control col-md-7 col-xs-12" value="${configInfo.deviceInfo}">
 									</div>
+
+                                    <div class="control-label col-md-1 col-sm-1 col-xs-6">
+                                        <!-- Large modal -->
+                                        <span><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#showModal">设备详情</button></span>
+                                        <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="showModal">
+                                            <div class="modal-dialog modal-lg" role="document" style="width: 500px">
+                                                <div class="modal-content">
+123
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 								</div>
 
 								<div class="item form-group">
@@ -143,21 +155,21 @@
 		<!-- /footer content -->
 	</div>
 </div>
-<script src="${ctx}resources/js/jquery.min.js"></script>
+<script src="${ctx}/js/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="${ctx}resources/js/bootstrap.min.js"></script>
+<script src="${ctx}/js/bootstrap.min.js"></script>
 <!-- FastClick -->
-<script src="${ctx}resources/js/fastclick.js"></script>
+<script src="${ctx}/js/fastclick.js"></script>
 <!-- NProgress -->
-<script src="${ctx}resources/js/nprogress.js"></script>
+<script src="${ctx}/js/nprogress.js"></script>
 <!--Layer Date-->
-<script src="${ctx}resources/js/laydate/laydate.js"></script>
+<script src="${ctx}/js/laydate/laydate.js"></script>
 <!-- jQuery Sparklines -->
 <!-- bootstrap-daterangepicker -->
-<script src="${ctx}resources/js/moment/moment.min.js"></script>
+<script src="${ctx}/js/moment/moment.min.js"></script>
 
 <!-- Custom Theme Scripts -->
-<script src="${ctx}resources/js/custom.min.js"></script>
+<script src="${ctx}/js/custom.min.js"></script>
 
 <script>
     laydate.render({
@@ -185,6 +197,32 @@
             $("input").addClass("is_disabled");
         }
     });
+
+    function showModal() {
+        $("#showModal").modal({
+            remote: "${ctx}deviceInfo/checkDevices?deviceInfo=" + $("#deviceInfo").val()
+        });
+    }
+
+    var mod = $("#showModal");
+    mod.on("show.bs.modal", function() {
+        $.ajax({
+            type:"post",
+            url:"${ctx}deviceInfo/checkDevices?deviceInfo=" + $("#deviceInfo").val(),
+            success:function(data){
+                var dataJson = eval('(' + data + ')');
+                var datalist = dataJson.keys;
+            },
+            error:function(data){
+                Modal.confirm({title:'提示',msg:"刷新数据失败!"});
+            }
+        })
+    });
+    mod.on("hidden.bs.modal", function() {
+        $(this).removeData("bs.modal");
+    });
+
+
 </script>
 </body>
 </html>

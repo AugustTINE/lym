@@ -26,7 +26,7 @@
 						<div class="x_title">
 							<ol class="breadcrumb">
 								<li><a href="${ctx}contractManager/index">合同数据</a></li>
-								<li class="active">模板列表</li>
+								<li class="active">合同列表</li>
 							</ol>
 						</div>
 						<div class="x_content">
@@ -72,7 +72,7 @@
 									</tr>
 
 								</table>--%>
-								<div style="height: 45px"><input type="button" class="btn btn-primary btn-xs" value="录入合同数据" onclick="window.location.href='${ctx}contractManager/toEdit.html'" /></div>
+								<div style="height: 45px"><input type="button" class="btn btn-primary btn-xs" value="录入合同数据" onclick="window.location.href='${ctx}contractManager/toEdit'" /></div>
 								<table class="table table-striped jambo_table bulk_action">
 									<thead>
 									<tr class="headings">
@@ -119,19 +119,19 @@
 	</div>
 </div>
 <!-- jQuery -->
-<script src="${ctx}resources/js/jquery.min.js"></script>
+<script src="${ctx}/js/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="${ctx}resources/js/bootstrap.min.js"></script>
+<script src="${ctx}/js/bootstrap.min.js"></script>
 <!-- FastClick -->
-<script src="${ctx}resources/js/fastclick.js"></script>
+<script src="${ctx}/js/fastclick.js"></script>
 <!-- NProgress -->
-<script src="${ctx}resources/js/nprogress.js"></script>
+<script src="${ctx}/js/nprogress.js"></script>
 <!-- jQuery Sparklines -->
 <!-- bootstrap-daterangepicker -->
-<script src="${ctx}resources/js/moment/moment.min.js"></script>
+<script src="${ctx}/js/moment/moment.min.js"></script>
 <!-- Custom Theme Scripts -->
-<script src="${ctx}resources/js/custom.min.js"></script>
-<script src="${ctx}resources/js/icheck.min.js"></script>
+<script src="${ctx}/js/custom.min.js"></script>
+<script src="${ctx}/js/icheck.min.js"></script>
 <script>
     $("th, td") .css("text-align" ,"center");
 </script>
