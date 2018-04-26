@@ -13,8 +13,7 @@
     </appender>
 
     <!-- 输出到文件 -->
-    <appender name="fileLog"
-              class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="fileLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOGPATH}${file.separator}${TIMESTAMP}.log</file>
         <append>true</append>
         <encoder>
@@ -32,7 +31,7 @@
     </appender>
 
     <root level="debug">
-        <!--<appender-ref ref="fileLog" />-->
+        <appender-ref ref="fileLog" />
         <appender-ref ref="stdout"  />
     </root>
 </configuration>

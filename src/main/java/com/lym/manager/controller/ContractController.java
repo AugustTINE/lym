@@ -15,12 +15,13 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Controller
+@RequestMapping("/contractManager")
 public class ContractController {
 
     @Autowired
     private ContractService contractService;
 
-    @RequestMapping(value = "/contractManager/index", method = RequestMethod.GET)
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index(@RequestParam(value = "pageNo", defaultValue = "1") Integer pageNo,
                         @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize,
                         Model model) {
@@ -33,7 +34,7 @@ public class ContractController {
         return "/WEB-INF/pages/contract/index.jsp";
     }
 
-    @RequestMapping("/contractManager/toEdit")
+    @RequestMapping("/toEdit")
     public String toEdit(@RequestParam(value = "id", defaultValue = "0") Integer id, Model model) {
 
         if (id != 0){
@@ -51,7 +52,7 @@ public class ContractController {
         return "/WEB-INF/pages/contract/edit.jsp";
     }
 
-    @RequestMapping("/contractManager/update")
+    @RequestMapping("/update")
     public String updateInfo(ContractInfo contractInfo, RedirectAttributes attr) {
         if (contractInfo.getId() != null){
             int count = contractService.updateSelective(contractInfo);
@@ -61,7 +62,7 @@ public class ContractController {
         return "/contractManager/index";
     }
 
-    @RequestMapping("/contractManager/deleteConfig")
+    @RequestMapping("/deleteConfig")
     public String deleteConfig(@RequestParam("id") Integer id, RedirectAttributes attr){
 
         return "/contractManager/index";
