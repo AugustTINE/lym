@@ -7,10 +7,6 @@ spring:
 #      charset: utf-8
 #      cache: false
 #      content-type: text/html
-#    mvc:
-#        view:
-#            prefix: /WEB-INF/pages/
-#            suffix: .jsp
     datasource:
         name: lym
         url: jdbc:mysql://192.168.199.178:3306/lym
@@ -37,8 +33,8 @@ mybatis:
   type-aliases-package: com.lym.manager.model
 
 #pagehelper分页插件
-pagehelper:
-    helperDialect: mysql
-    reasonable: true
-    supportMethodsArguments: true
-    params: count=countSql
+#pagehelper:
+#    helperDialect: mysql
+#    reasonable: true
+#    supportMethodsArguments: true
+#    params: count=countSql

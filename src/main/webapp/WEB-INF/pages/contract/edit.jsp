@@ -244,7 +244,7 @@
     mod.on("show.bs.modal", function() {
         // 关键代码，如没将modal设置为 block，则$modala_dialog.height() 为零 模态窗口居中
         $(this).css('display', 'block');
-        var modalHeight=$(window).height() / 2 - $('#youModel .modal-dialog').height() / 2;
+        var modalHeight=$(window).height() / 3 - $('#youModel .modal-dialog').height() / 3;
         $(this).find('.modal-dialog').css({
             'margin-top': modalHeight
         });

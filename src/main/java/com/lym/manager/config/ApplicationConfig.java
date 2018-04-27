@@ -1,4 +1,4 @@
-package com.lym.manager.model;
+package com.lym.manager.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,7 @@ import org.springframework.core.env.Environment;
 
 import javax.sql.DataSource;
 
-@ComponentScan
+
 @Configuration
 public class ApplicationConfig {
 

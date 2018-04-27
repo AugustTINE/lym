@@ -11,6 +11,6 @@ public class Common {
 
     @RequestMapping(value = "/index",method = RequestMethod.GET)
     public String test(){
-        return "/WEB-INF/pages/index.jsp";
+        return "index";
     }
 }
