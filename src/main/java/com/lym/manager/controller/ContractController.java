@@ -27,9 +27,6 @@ public class ContractController {
         Integer total = contractService.count();
         List<ContractInfo> contractInfo = contractService.queryListByPage((pageNo - 1) * pageSize, pageSize);
         model.addAttribute("page", new Page<>(pageNo, pageSize, total, contractInfo));
-        model.addAttribute("pageNo", pageNo);
-        model.addAttribute("pageSize", pageSize);
-
         return "contract/index";
     }
 
