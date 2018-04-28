@@ -13,11 +13,11 @@ import java.util.List;
 public class ContractServiceImpl implements ContractService {
 
     @Resource
-    private ContractInfoMapper contractDao;
+    private ContractInfoMapper contractMapper;
 
     @Override
     public ContractInfo selectByPrimaryKey(Integer id) {
-        return contractDao.selectById(id);
+        return contractMapper.selectById(id);
     }
 
     @Override
@@ -27,22 +27,22 @@ public class ContractServiceImpl implements ContractService {
 
     @Override
     public Integer count() {
-        return contractDao.count();
+        return contractMapper.count();
     }
 
     @Override
     public Integer updateSelective(ContractInfo contractInfo) {
-        return contractDao.updateByExampleSelective(contractInfo, new ContractInfoExample());
+        return contractMapper.updateByExampleSelective(contractInfo, new ContractInfoExample());
     }
 
     @Override
     public Integer insert(ContractInfo contractInfo) {
-        return contractDao.insert(contractInfo);
+        return contractMapper.insert(contractInfo);
     }
 
     @Override
     public List<ContractInfo> queryListByPage(Integer pageNo, Integer pageSize) {
-        return contractDao.queryListByPage(pageNo,pageSize);
+        return contractMapper.queryListByPage(pageNo,pageSize);
     }
 
     @Override
