@@ -25,3 +25,22 @@ mybatis:
 #    reasonable: true
 #    supportMethodsArguments: true
 #    params: count=countSql
+
+
+#mysql
+#CREATE TABLE `contract_info` (
+#  `id` int(11) NOT NULL,
+#  `big_area` varchar(255) DEFAULT NULL,
+#  `city` varchar(255) DEFAULT NULL,
+#  `contract_name` varchar(255) DEFAULT NULL,
+#  `sign_date` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+#  `sign_person` varchar(255) DEFAULT NULL,
+#  `invalid_date` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+#  `device_num` int(11) DEFAULT NULL,
+#  `device_info` varchar(255) DEFAULT NULL,
+#  `rent_per` varchar(255) DEFAULT NULL,
+#  `payment` varchar(255) DEFAULT NULL,
+#  `pay_date_recent` varchar(255) DEFAULT NULL,
+#  `pay_date_next` varchar(255) DEFAULT NULL,
+#  PRIMARY KEY (`id`)
+#) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -1,5 +1,7 @@
 package com.lym.manager.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -27,6 +29,7 @@ public class ContractInfo implements Serializable {
     /**
      * 签署日期
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date signDate;
 
     /**
@@ -37,6 +40,7 @@ public class ContractInfo implements Serializable {
     /**
      * 合同到期时间
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date invalidDate;
 
     /**
@@ -62,12 +66,12 @@ public class ContractInfo implements Serializable {
     /**
      * 近期支付时间
      */
-    private Date payDateRecent;
+    private String payDateRecent;
 
     /**
      * 下次支付时间
      */
-    private Date payDateNext;
+    private String payDateNext;
 
     /**
      * 备注
@@ -164,19 +168,19 @@ public class ContractInfo implements Serializable {
         this.payment = payment;
     }
 
-    public Date getPayDateRecent() {
+    public String getPayDateRecent() {
         return payDateRecent;
     }
 
-    public void setPayDateRecent(Date payDateRecent) {
+    public void setPayDateRecent(String payDateRecent) {
         this.payDateRecent = payDateRecent;
     }
 
-    public Date getPayDateNext() {
+    public String getPayDateNext() {
         return payDateNext;
     }
 
-    public void setPayDateNext(Date payDateNext) {
+    public void setPayDateNext(String payDateNext) {
         this.payDateNext = payDateNext;
     }
 

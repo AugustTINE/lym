@@ -13,8 +13,8 @@
     <result column="device_info" jdbcType="VARCHAR" property="deviceInfo" />
     <result column="rent_per" jdbcType="VARCHAR" property="rentPer" />
     <result column="payment" jdbcType="VARCHAR" property="payment" />
-    <result column="pay_date_recent" jdbcType="TIMESTAMP" property="payDateRecent" />
-    <result column="pay_date_next" jdbcType="TIMESTAMP" property="payDateNext" />
+    <result column="pay_date_recent" jdbcType="VARCHAR" property="payDateRecent" />
+    <result column="pay_date_next" jdbcType="VARCHAR" property="payDateNext" />
     <result column="comments" jdbcType="VARCHAR" property="comments" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -116,8 +116,8 @@
     values (#{id,jdbcType=INTEGER}, #{bigArea,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
       #{contractName,jdbcType=VARCHAR}, #{signDate,jdbcType=TIMESTAMP}, #{signPerson,jdbcType=VARCHAR}, 
       #{invalidDate,jdbcType=TIMESTAMP}, #{deviceNum,jdbcType=INTEGER}, #{deviceInfo,jdbcType=VARCHAR}, 
-      #{rentPer,jdbcType=VARCHAR}, #{payment,jdbcType=VARCHAR}, #{payDateRecent,jdbcType=TIMESTAMP}, 
-      #{payDateNext,jdbcType=TIMESTAMP}, #{comments,jdbcType=VARCHAR})
+      #{rentPer,jdbcType=VARCHAR}, #{payment,jdbcType=VARCHAR}, #{payDateRecent,jdbcType=VARCHAR},
+      #{payDateNext,jdbcType=VARCHAR}, #{comments,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.lym.manager.model.ContractInfo">
     insert into contract_info
@@ -200,10 +200,10 @@
         #{payment,jdbcType=VARCHAR},
       </if>
       <if test="payDateRecent != null">
-        #{payDateRecent,jdbcType=TIMESTAMP},
+        #{payDateRecent,jdbcType=VARCHAR},
       </if>
       <if test="payDateNext != null">
-        #{payDateNext,jdbcType=TIMESTAMP},
+        #{payDateNext,jdbcType=VARCHAR},
       </if>
       <if test="comments != null">
         #{comments,jdbcType=VARCHAR},
@@ -253,10 +253,10 @@
         payment = #{record.payment,jdbcType=VARCHAR},
       </if>
       <if test="record.payDateRecent != null">
-        pay_date_recent = #{record.payDateRecent,jdbcType=TIMESTAMP},
+        pay_date_recent = #{record.payDateRecent,jdbcType=VARCHAR},
       </if>
       <if test="record.payDateNext != null">
-        pay_date_next = #{record.payDateNext,jdbcType=TIMESTAMP},
+        pay_date_next = #{record.payDateNext,jdbcType=VARCHAR},
       </if>
       <if test="record.comments != null">
         comments = #{record.comments,jdbcType=VARCHAR},
@@ -279,8 +279,8 @@
       device_info = #{record.deviceInfo,jdbcType=VARCHAR},
       rent_per = #{record.rentPer,jdbcType=VARCHAR},
       payment = #{record.payment,jdbcType=VARCHAR},
-      pay_date_recent = #{record.payDateRecent,jdbcType=TIMESTAMP},
-      pay_date_next = #{record.payDateNext,jdbcType=TIMESTAMP},
+      pay_date_recent = #{record.payDateRecent,jdbcType=VARCHAR},
+      pay_date_next = #{record.payDateNext,jdbcType=VARCHAR},
       comments = #{record.comments,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
