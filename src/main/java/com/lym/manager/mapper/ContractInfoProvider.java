@@ -1,6 +1,7 @@
 package com.lym.manager.mapper;
 
 import com.lym.manager.model.ContractInfo;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.jdbc.SQL;
 
 public class ContractInfoProvider {
@@ -46,7 +47,7 @@ public class ContractInfoProvider {
         }}.toString();
     }
 
-    public String queryListByPage(Integer startNo, Integer pageSize){
+    public String queryListByPage(@Param("startNo") Integer startNo,  @Param("pageSize")Integer pageSize){
         return new SQL(){{
             SELECT(columns);
             FROM(table);

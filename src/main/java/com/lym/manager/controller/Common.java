@@ -10,7 +10,7 @@ import java.util.Map;
 public class Common {
 
     @RequestMapping(value = "/index",method = RequestMethod.GET)
-    public String test(){
+    public String index(){
         return "index";
     }
 }

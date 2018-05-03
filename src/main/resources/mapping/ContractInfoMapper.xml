@@ -46,251 +46,251 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    id, big_area, city, contract_name, sign_date, sign_person, invalid_date, device_num, 
-    device_info, rent_per, payment, pay_date_recent, pay_date_next, comments
-  </sql>
-  <select id="selectByExample" parameterType="com.lym.manager.model.ContractInfoExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from contract_info
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-    <if test="limit != null">
-      <if test="offset != null">
-        limit ${offset}, ${limit}
-      </if>
-      <if test="offset == null">
-        limit ${limit}
-      </if>
-    </if>
-  </select>
-  <delete id="deleteByExample" parameterType="com.lym.manager.model.ContractInfoExample">
-    delete from contract_info
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.lym.manager.model.ContractInfo">
-    insert into contract_info (id, big_area, city, 
-      contract_name, sign_date, sign_person, 
-      invalid_date, device_num, device_info, 
-      rent_per, payment, pay_date_recent, 
-      pay_date_next, comments)
-    values (#{id,jdbcType=INTEGER}, #{bigArea,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
-      #{contractName,jdbcType=VARCHAR}, #{signDate,jdbcType=TIMESTAMP}, #{signPerson,jdbcType=VARCHAR}, 
-      #{invalidDate,jdbcType=TIMESTAMP}, #{deviceNum,jdbcType=INTEGER}, #{deviceInfo,jdbcType=VARCHAR}, 
-      #{rentPer,jdbcType=VARCHAR}, #{payment,jdbcType=VARCHAR}, #{payDateRecent,jdbcType=VARCHAR},
-      #{payDateNext,jdbcType=VARCHAR}, #{comments,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.lym.manager.model.ContractInfo">
-    insert into contract_info
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="bigArea != null">
-        big_area,
-      </if>
-      <if test="city != null">
-        city,
-      </if>
-      <if test="contractName != null">
-        contract_name,
-      </if>
-      <if test="signDate != null">
-        sign_date,
-      </if>
-      <if test="signPerson != null">
-        sign_person,
-      </if>
-      <if test="invalidDate != null">
-        invalid_date,
-      </if>
-      <if test="deviceNum != null">
-        device_num,
-      </if>
-      <if test="deviceInfo != null">
-        device_info,
-      </if>
-      <if test="rentPer != null">
-        rent_per,
-      </if>
-      <if test="payment != null">
-        payment,
-      </if>
-      <if test="payDateRecent != null">
-        pay_date_recent,
-      </if>
-      <if test="payDateNext != null">
-        pay_date_next,
-      </if>
-      <if test="comments != null">
-        comments,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="bigArea != null">
-        #{bigArea,jdbcType=VARCHAR},
-      </if>
-      <if test="city != null">
-        #{city,jdbcType=VARCHAR},
-      </if>
-      <if test="contractName != null">
-        #{contractName,jdbcType=VARCHAR},
-      </if>
-      <if test="signDate != null">
-        #{signDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="signPerson != null">
-        #{signPerson,jdbcType=VARCHAR},
-      </if>
-      <if test="invalidDate != null">
-        #{invalidDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="deviceNum != null">
-        #{deviceNum,jdbcType=INTEGER},
-      </if>
-      <if test="deviceInfo != null">
-        #{deviceInfo,jdbcType=VARCHAR},
-      </if>
-      <if test="rentPer != null">
-        #{rentPer,jdbcType=VARCHAR},
-      </if>
-      <if test="payment != null">
-        #{payment,jdbcType=VARCHAR},
-      </if>
-      <if test="payDateRecent != null">
-        #{payDateRecent,jdbcType=VARCHAR},
-      </if>
-      <if test="payDateNext != null">
-        #{payDateNext,jdbcType=VARCHAR},
-      </if>
-      <if test="comments != null">
-        #{comments,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.lym.manager.model.ContractInfoExample" resultType="java.lang.Long">
-    select count(*) from contract_info
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update contract_info
-    <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=INTEGER},
-      </if>
-      <if test="record.bigArea != null">
-        big_area = #{record.bigArea,jdbcType=VARCHAR},
-      </if>
-      <if test="record.city != null">
-        city = #{record.city,jdbcType=VARCHAR},
-      </if>
-      <if test="record.contractName != null">
-        contract_name = #{record.contractName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.signDate != null">
-        sign_date = #{record.signDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.signPerson != null">
-        sign_person = #{record.signPerson,jdbcType=VARCHAR},
-      </if>
-      <if test="record.invalidDate != null">
-        invalid_date = #{record.invalidDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.deviceNum != null">
-        device_num = #{record.deviceNum,jdbcType=INTEGER},
-      </if>
-      <if test="record.deviceInfo != null">
-        device_info = #{record.deviceInfo,jdbcType=VARCHAR},
-      </if>
-      <if test="record.rentPer != null">
-        rent_per = #{record.rentPer,jdbcType=VARCHAR},
-      </if>
-      <if test="record.payment != null">
-        payment = #{record.payment,jdbcType=VARCHAR},
-      </if>
-      <if test="record.payDateRecent != null">
-        pay_date_recent = #{record.payDateRecent,jdbcType=VARCHAR},
-      </if>
-      <if test="record.payDateNext != null">
-        pay_date_next = #{record.payDateNext,jdbcType=VARCHAR},
-      </if>
-      <if test="record.comments != null">
-        comments = #{record.comments,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update contract_info
-    set id = #{record.id,jdbcType=INTEGER},
-      big_area = #{record.bigArea,jdbcType=VARCHAR},
-      city = #{record.city,jdbcType=VARCHAR},
-      contract_name = #{record.contractName,jdbcType=VARCHAR},
-      sign_date = #{record.signDate,jdbcType=TIMESTAMP},
-      sign_person = #{record.signPerson,jdbcType=VARCHAR},
-      invalid_date = #{record.invalidDate,jdbcType=TIMESTAMP},
-      device_num = #{record.deviceNum,jdbcType=INTEGER},
-      device_info = #{record.deviceInfo,jdbcType=VARCHAR},
-      rent_per = #{record.rentPer,jdbcType=VARCHAR},
-      payment = #{record.payment,jdbcType=VARCHAR},
-      pay_date_recent = #{record.payDateRecent,jdbcType=VARCHAR},
-      pay_date_next = #{record.payDateNext,jdbcType=VARCHAR},
-      comments = #{record.comments,jdbcType=VARCHAR}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
+  <!--<sql id="Update_By_Example_Where_Clause">-->
+    <!--<where>-->
+      <!--<foreach collection="example.oredCriteria" item="criteria" separator="or">-->
+        <!--<if test="criteria.valid">-->
+          <!--<trim prefix="(" prefixOverrides="and" suffix=")">-->
+            <!--<foreach collection="criteria.criteria" item="criterion">-->
+              <!--<choose>-->
+                <!--<when test="criterion.noValue">-->
+                  <!--and ${criterion.condition}-->
+                <!--</when>-->
+                <!--<when test="criterion.singleValue">-->
+                  <!--and ${criterion.condition} #{criterion.value}-->
+                <!--</when>-->
+                <!--<when test="criterion.betweenValue">-->
+                  <!--and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}-->
+                <!--</when>-->
+                <!--<when test="criterion.listValue">-->
+                  <!--and ${criterion.condition}-->
+                  <!--<foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">-->
+                    <!--#{listItem}-->
+                  <!--</foreach>-->
+                <!--</when>-->
+              <!--</choose>-->
+            <!--</foreach>-->
+          <!--</trim>-->
+        <!--</if>-->
+      <!--</foreach>-->
+    <!--</where>-->
+  <!--</sql>-->
+  <!--<sql id="Base_Column_List">-->
+    <!--id, big_area, city, contract_name, sign_date, sign_person, invalid_date, device_num, -->
+    <!--device_info, rent_per, payment, pay_date_recent, pay_date_next, comments-->
+  <!--</sql>-->
+  <!--<select id="selectByExample" parameterType="com.lym.manager.model.ContractInfoExample" resultMap="BaseResultMap">-->
+    <!--select-->
+    <!--<if test="distinct">-->
+      <!--distinct-->
+    <!--</if>-->
+    <!--<include refid="Base_Column_List" />-->
+    <!--from contract_info-->
+    <!--<if test="_parameter != null">-->
+      <!--<include refid="Example_Where_Clause" />-->
+    <!--</if>-->
+    <!--<if test="orderByClause != null">-->
+      <!--order by ${orderByClause}-->
+    <!--</if>-->
+    <!--<if test="limit != null">-->
+      <!--<if test="offset != null">-->
+        <!--limit ${offset}, ${limit}-->
+      <!--</if>-->
+      <!--<if test="offset == null">-->
+        <!--limit ${limit}-->
+      <!--</if>-->
+    <!--</if>-->
+  <!--</select>-->
+  <!--<delete id="deleteByExample" parameterType="com.lym.manager.model.ContractInfoExample">-->
+    <!--delete from contract_info-->
+    <!--<if test="_parameter != null">-->
+      <!--<include refid="Example_Where_Clause" />-->
+    <!--</if>-->
+  <!--</delete>-->
+  <!--<insert id="insert" parameterType="com.lym.manager.model.ContractInfo">-->
+    <!--insert into contract_info (id, big_area, city, -->
+      <!--contract_name, sign_date, sign_person, -->
+      <!--invalid_date, device_num, device_info, -->
+      <!--rent_per, payment, pay_date_recent, -->
+      <!--pay_date_next, comments)-->
+    <!--values (#{id,jdbcType=INTEGER}, #{bigArea,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, -->
+      <!--#{contractName,jdbcType=VARCHAR}, #{signDate,jdbcType=TIMESTAMP}, #{signPerson,jdbcType=VARCHAR}, -->
+      <!--#{invalidDate,jdbcType=TIMESTAMP}, #{deviceNum,jdbcType=INTEGER}, #{deviceInfo,jdbcType=VARCHAR}, -->
+      <!--#{rentPer,jdbcType=VARCHAR}, #{payment,jdbcType=VARCHAR}, #{payDateRecent,jdbcType=VARCHAR},-->
+      <!--#{payDateNext,jdbcType=VARCHAR}, #{comments,jdbcType=VARCHAR})-->
+  <!--</insert>-->
+  <!--<insert id="insertSelective" parameterType="com.lym.manager.model.ContractInfo">-->
+    <!--insert into contract_info-->
+    <!--<trim prefix="(" suffix=")" suffixOverrides=",">-->
+      <!--<if test="id != null">-->
+        <!--id,-->
+      <!--</if>-->
+      <!--<if test="bigArea != null">-->
+        <!--big_area,-->
+      <!--</if>-->
+      <!--<if test="city != null">-->
+        <!--city,-->
+      <!--</if>-->
+      <!--<if test="contractName != null">-->
+        <!--contract_name,-->
+      <!--</if>-->
+      <!--<if test="signDate != null">-->
+        <!--sign_date,-->
+      <!--</if>-->
+      <!--<if test="signPerson != null">-->
+        <!--sign_person,-->
+      <!--</if>-->
+      <!--<if test="invalidDate != null">-->
+        <!--invalid_date,-->
+      <!--</if>-->
+      <!--<if test="deviceNum != null">-->
+        <!--device_num,-->
+      <!--</if>-->
+      <!--<if test="deviceInfo != null">-->
+        <!--device_info,-->
+      <!--</if>-->
+      <!--<if test="rentPer != null">-->
+        <!--rent_per,-->
+      <!--</if>-->
+      <!--<if test="payment != null">-->
+        <!--payment,-->
+      <!--</if>-->
+      <!--<if test="payDateRecent != null">-->
+        <!--pay_date_recent,-->
+      <!--</if>-->
+      <!--<if test="payDateNext != null">-->
+        <!--pay_date_next,-->
+      <!--</if>-->
+      <!--<if test="comments != null">-->
+        <!--comments,-->
+      <!--</if>-->
+    <!--</trim>-->
+    <!--<trim prefix="values (" suffix=")" suffixOverrides=",">-->
+      <!--<if test="id != null">-->
+        <!--#{id,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="bigArea != null">-->
+        <!--#{bigArea,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="city != null">-->
+        <!--#{city,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="contractName != null">-->
+        <!--#{contractName,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="signDate != null">-->
+        <!--#{signDate,jdbcType=TIMESTAMP},-->
+      <!--</if>-->
+      <!--<if test="signPerson != null">-->
+        <!--#{signPerson,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="invalidDate != null">-->
+        <!--#{invalidDate,jdbcType=TIMESTAMP},-->
+      <!--</if>-->
+      <!--<if test="deviceNum != null">-->
+        <!--#{deviceNum,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="deviceInfo != null">-->
+        <!--#{deviceInfo,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="rentPer != null">-->
+        <!--#{rentPer,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="payment != null">-->
+        <!--#{payment,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="payDateRecent != null">-->
+        <!--#{payDateRecent,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="payDateNext != null">-->
+        <!--#{payDateNext,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="comments != null">-->
+        <!--#{comments,jdbcType=VARCHAR},-->
+      <!--</if>-->
+    <!--</trim>-->
+  <!--</insert>-->
+  <!--<select id="countByExample" parameterType="com.lym.manager.model.ContractInfoExample" resultType="java.lang.Long">-->
+    <!--select count(*) from contract_info-->
+    <!--<if test="_parameter != null">-->
+      <!--<include refid="Example_Where_Clause" />-->
+    <!--</if>-->
+  <!--</select>-->
+  <!--<update id="updateByExampleSelective" parameterType="map">-->
+    <!--update contract_info-->
+    <!--<set>-->
+      <!--<if test="record.id != null">-->
+        <!--id = #{record.id,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="record.bigArea != null">-->
+        <!--big_area = #{record.bigArea,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.city != null">-->
+        <!--city = #{record.city,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.contractName != null">-->
+        <!--contract_name = #{record.contractName,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.signDate != null">-->
+        <!--sign_date = #{record.signDate,jdbcType=TIMESTAMP},-->
+      <!--</if>-->
+      <!--<if test="record.signPerson != null">-->
+        <!--sign_person = #{record.signPerson,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.invalidDate != null">-->
+        <!--invalid_date = #{record.invalidDate,jdbcType=TIMESTAMP},-->
+      <!--</if>-->
+      <!--<if test="record.deviceNum != null">-->
+        <!--device_num = #{record.deviceNum,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="record.deviceInfo != null">-->
+        <!--device_info = #{record.deviceInfo,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.rentPer != null">-->
+        <!--rent_per = #{record.rentPer,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.payment != null">-->
+        <!--payment = #{record.payment,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.payDateRecent != null">-->
+        <!--pay_date_recent = #{record.payDateRecent,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.payDateNext != null">-->
+        <!--pay_date_next = #{record.payDateNext,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.comments != null">-->
+        <!--comments = #{record.comments,jdbcType=VARCHAR},-->
+      <!--</if>-->
+    <!--</set>-->
+    <!--<if test="_parameter != null">-->
+      <!--<include refid="Update_By_Example_Where_Clause" />-->
+    <!--</if>-->
+  <!--</update>-->
+  <!--<update id="updateByExample" parameterType="map">-->
+    <!--update contract_info-->
+    <!--set id = #{record.id,jdbcType=INTEGER},-->
+      <!--big_area = #{record.bigArea,jdbcType=VARCHAR},-->
+      <!--city = #{record.city,jdbcType=VARCHAR},-->
+      <!--contract_name = #{record.contractName,jdbcType=VARCHAR},-->
+      <!--sign_date = #{record.signDate,jdbcType=TIMESTAMP},-->
+      <!--sign_person = #{record.signPerson,jdbcType=VARCHAR},-->
+      <!--invalid_date = #{record.invalidDate,jdbcType=TIMESTAMP},-->
+      <!--device_num = #{record.deviceNum,jdbcType=INTEGER},-->
+      <!--device_info = #{record.deviceInfo,jdbcType=VARCHAR},-->
+      <!--rent_per = #{record.rentPer,jdbcType=VARCHAR},-->
+      <!--payment = #{record.payment,jdbcType=VARCHAR},-->
+      <!--pay_date_recent = #{record.payDateRecent,jdbcType=VARCHAR},-->
+      <!--pay_date_next = #{record.payDateNext,jdbcType=VARCHAR},-->
+      <!--comments = #{record.comments,jdbcType=VARCHAR}-->
+    <!--<if test="_parameter != null">-->
+      <!--<include refid="Update_By_Example_Where_Clause" />-->
+    <!--</if>-->
+  <!--</update>-->
 
-  <select id="count" resultType="java.lang.Integer">
-      SELECT COUNT(id) FROM contract_info where is_active = 1
-  </select>
-  <select id="selectByPrimaryKey" parameterType="int" resultMap="BaseResultMap">
-      select * from contract_info where id=#{id} and is_active = 1
-  </select>
+  <!--<select id="count" resultType="java.lang.Integer">-->
+      <!--SELECT COUNT(id) FROM contract_info where is_active = 1-->
+  <!--</select>-->
+  <!--<select id="selectByPrimaryKey" parameterType="int" resultMap="BaseResultMap">-->
+      <!--select * from contract_info where id=#{id} and is_active = 1-->
+  <!--</select>-->
 </mapper>
