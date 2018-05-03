@@ -16,9 +16,6 @@ public interface ContractInfoMapper {
     @InsertProvider(type = ContractInfoProvider.class, method = "insert")
     int insert(ContractInfo record);
 
-    @InsertProvider(type = ContractInfoProvider.class, method = "insertSelective")
-    int insertSelective(ContractInfo record);
-
     @UpdateProvider(type = ContractInfoProvider.class, method = "updateSelective")
     int updateSelective(@Param("record") ContractInfo record);
 
