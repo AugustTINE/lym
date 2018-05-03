@@ -2,7 +2,6 @@ package com.lym.manager.service.impl;
 
 import com.lym.manager.mapper.ContractInfoMapper;
 import com.lym.manager.model.ContractInfo;
-import com.lym.manager.model.ContractInfoExample;
 import com.lym.manager.service.ContractService;
 import org.springframework.stereotype.Service;
 
