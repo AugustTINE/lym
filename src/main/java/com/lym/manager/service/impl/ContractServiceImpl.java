@@ -32,7 +32,7 @@ public class ContractServiceImpl implements ContractService {
 
     @Override
     public Integer updateSelective(ContractInfo contractInfo) {
-        return contractMapper.updateByExampleSelective(contractInfo, new ContractInfoExample());
+        return contractMapper.updateSelective(contractInfo);
     }
 
     @Override
@@ -47,7 +47,7 @@ public class ContractServiceImpl implements ContractService {
 
     @Override
     public Integer deleteConfig(Integer id) {
-        return null;
+        return contractMapper.deleteById(id);
     }
 
 }
