@@ -47,7 +47,7 @@ public class ContractInfoProvider {
         }}.toString();
     }
 
-    public String queryListByPage(@Param("startNo") Integer startNo,  @Param("pageSize")Integer pageSize){
+    public String queryListByPage(Integer startNo,Integer pageSize){
         return new SQL(){{
             SELECT(columns);
             FROM(table);
