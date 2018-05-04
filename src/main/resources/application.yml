@@ -18,6 +18,8 @@ spring:
 mybatis:
 #  mapper-locations: classpath:mapping/*.xml
   type-aliases-package: com.lym.manager.model
+  configuration:
+      map-underscore-to-camel-case: true
 
 #pagehelper分页插件
 #pagehelper:
