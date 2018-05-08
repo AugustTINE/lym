@@ -14,9 +14,15 @@
                 <ul class="nav side-menu">
                     <li class="${menu eq 'card'?'active':''}"><a><i class="fa fa-home"></i>活动管理配置<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu" style="${menu eq 'card'?'display: block;':''}">
-                            <li class="${submenu eq 'coupon_config'?'current-page':''}"><a href="${ctx}couponConfig/index">活动管理</a></li>
-                            <li class="${submenu eq 'coupon_config'?'current-page':''}"><a href="${ctx}contractManager/index">合同数据</a></li>
-                            <li class="${submenu eq 'coupon_config'?'current-page':''}"><a href="${ctx}deviceInfo/index">设备数据</a></li>
+                            <li>
+                                <a href="${ctx}couponConfig/index">
+                                    <i class="fa fa fa-server"></i>
+                                    <span class="nav-label">活动管理</span>
+                                    <span class="fa arrow"></span>
+                                </a>
+                            </li>
+                            <li><a href="${ctx}contractManager/index">合同数据</a></li>
+                            <li><a href="${ctx}deviceInfo/index">设备数据</a></li>
                         </ul>
                     </li>
 
